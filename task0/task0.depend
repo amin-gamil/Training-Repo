@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1721099630 source:d:\mia\task0\main.cpp
+	<iostream>
+	<string>
+
+1721100375 source:d:\mia\task0\task1.cpp
+	<iostream>
+	<string>
+
