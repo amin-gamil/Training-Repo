@@ -6,7 +6,7 @@ The repository is created to document and archive every task from phase 1 of tra
 
 ### Task 1 
 
-This task was intended to test applying basic C++ code. Basic I/O like `cout` & `cin` and for and while-loops where implemented. Check Task 1's [README](<Task 1/README.md>) for more details on specific tasks.
+This task was intended to test applying basic C++ code. Basic I/O like `cout` & `cin` and for and while-loops where implemented. Check Task 1's [README](<Branch1/Task 1/README.md>) for more details on specific tasks.
 
 ### Task 2
 
