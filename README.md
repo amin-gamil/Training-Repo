@@ -1,5 +1,5 @@
 # Task 7.2 – Linux Commands
-For this task, basic Linux commands where implented on Ubuntu, this README documents the process.
+For this task, basic Linux commands where implemented on Ubuntu, this README documents the process.
 
 List of operations performed:  
 1. Print working directory
@@ -22,7 +22,7 @@ Now, we know where the working directory is, the contents can be viewed using `l
 
 ![alt text](02.png)
 
-## Change working 
+## Change working directory
 
 Let's focus on the **Documents** folder, we do so by typing ` cd Documents `.  
 Inside **Documents**, ` ls `, reveales a folder named **micro**.  
