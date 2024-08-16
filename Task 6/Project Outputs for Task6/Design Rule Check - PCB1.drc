@@ -1,0 +1,129 @@
+Protel Design System Design Rule Check
+PCB File : D:\mia\Task 6\Task6\PCB1.PcbDoc
+Date     : 8/7/2024
+Time     : 11:19:53 PM
+
+Processing Rule : Clearance Constraint (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+   Violation between Un-Routed Net Constraint: Net MCU 1 Between Pad R1-2(90mil,2467.166mil) on Multi-Layer And Pad J1-1(216.26mil,2610mil) on Multi-Layer 
+Rule Violations :1
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=31.496mil) (Max=31.496mil) (Preferred=31.496mil) (All)
+   Violation between Width Constraint: Arc (568.426mil,2250mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Arc (568.426mil,2250mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1005mil,2305.592mil)(1005mil,2415mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1122.204mil,3475mil)(1465mil,3132.204mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (121.574mil,3360mil)(236.574mil,3475mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1235mil,2302.796mil)(1357.155mil,2180.641mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (126.574mil,3208.426mil)(126.574mil,3360mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1357.155mil,2180.641mil)(1357.796mil,2180mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1357.155mil,2180.641mil)(1359.61mil,2180.634mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1357.796mil,2180mil)(1359.61mil,2180.634mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1357.796mil,2180mil)(1577.204mil,2180mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1359.61mil,2180.634mil)(1577.204mil,2180mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1377.796mil,3040mil)(1465mil,3127.204mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1417.204mil,2307.796mil)(1465mil,2307.796mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1465mil,3127.204mil)(1470mil,3122.204mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1470mil,3122.204mil)(1695mil,3122.204mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (1577.204mil,2180mil)(1695mil,2297.796mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (167.756mil,2658.504mil)(167.756mil,2840mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (167.756mil,2658.504mil)(216.26mil,2610mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (167.756mil,2840mil)(350mil,2840mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (167.756mil,2940mil)(172.756mil,2935mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (172.756mil,2935mil)(355mil,2935mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (180mil,2467.166mil)(285.614mil,2572.78mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (218.372mil,2255mil)(401.204mil,2255mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (23.426mil,2330.186mil)(23.426mil,2895.67mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (23.426mil,2330.186mil)(65mil,2288.61mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (23.426mil,2895.67mil)(167.756mil,3040mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (23.426mil,2895.67mil)(23.426mil,3105.278mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (23.426mil,3105.278mil)(126.574mil,3208.426mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (236.574mil,3475mil)(1122.204mil,3475mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (285.614mil,2572.78mil)(285.614mil,2600.614mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (285.614mil,2600.614mil)(295mil,2610mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (295mil,2610mil)(520mil,2835mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (318.424mil,3360mil)(323.424mil,3276.576mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (318.424mil,3360mil)(561.22mil,3117.204mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (323.424mil,3066.576mil)(323.424mil,3276.576mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (323.424mil,3066.576mil)(355mil,3035mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (323.424mil,3276.576mil)(565mil,3035mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (350mil,2840mil)(355mil,2835mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (401.204mil,2255mil)(499.63mil,2255mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (45mil,2428.372mil)(218.372mil,2255mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (45mil,2428.372mil)(45mil,2817.244mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (45mil,2817.244mil)(167.756mil,2940mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (499.63mil,2255mil)(527.734mil,2226.896mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (520mil,2835mil)(565mil,2835mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (527.734mil,2226.896mil)(530.833mil,2222.639mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (530.833mil,2222.639mil)(545.32mil,2209.31mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (545.32mil,2209.31mil)(571.7mil,2182.928mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (561.22mil,3117.204mil)(1235mil,3117.204mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (565mil,2835mil)(780mil,2835mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (565mil,2935mil)(570mil,2940mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (570mil,2940mil)(785mil,2940mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (571.7mil,2182.928mil)(1357.155mil,2180.641mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (581.528mil,2271.528mil)(865mil,2555mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (65mil,2137.834mil)(65mil,2288.61mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (65mil,2137.834mil)(90mil,2112.834mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (780mil,2835mil)(785mil,2840mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (785mil,2940mil)(865mil,2860mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (785mil,3040mil)(1377.796mil,3040mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (865mil,2555mil)(1005mil,2415mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (865mil,2555mil)(865mil,2860mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (865mil,2860mil)(1417.204mil,2307.796mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+   Violation between Width Constraint: Track (90mil,2112.834mil)(180mil,2112.834mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil
+Rule Violations :63
+
+Processing Rule : Routing Topology Rule(Topology=Shortest) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=10mil) (IsPad),(All)
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 10mil) Between Pad J1-1(216.26mil,2610mil) on Multi-Layer And Text "R2" (153mil,2529mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]
+   Violation between Silk To Solder Mask Clearance Constraint: (2.074mil < 10mil) Between Pad R2-2(195mil,2467.166mil) on Multi-Layer And Track (139.488mil,2499.764mil)(371.772mil,2499.764mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.074mil]
+Rule Violations :2
+
+Processing Rule : Silk to Silk (Clearance=10mil) (All),(All)
+   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Arc (140mil,2723.465mil) on Top Overlay And Text "J1" (145mil,2712mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Arc (318.425mil,3172.992mil) on Top Overlay And Text "Q1" (249mil,3181mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (5.652mil < 10mil) Between Text "J1" (145mil,2712mil) on Top Overlay And Track (229.566mil,2762.834mil)(229.566mil,3117.166mil) on Top Overlay Silk Text to Silk Clearance [5.652mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Text "J1" (145mil,2712mil) on Top Overlay And Track (50.434mil,2735.276mil)(229.566mil,2762.834mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Text "J3" (284mil,2482mil) on Top Overlay And Track (139.488mil,2499.764mil)(371.772mil,2499.764mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Text "J3" (284mil,2482mil) on Top Overlay And Track (371.772mil,2499.764mil)(371.772mil,2676.93mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Text "Q1" (249mil,3181mil) on Top Overlay And Track (23.148mil,3198.582mil)(440.472mil,3198.582mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (9.591mil < 10mil) Between Text "Q2" (459mil,3181mil) on Top Overlay And Track (23.148mil,3198.582mil)(440.472mil,3198.582mil) on Top Overlay Silk Text to Silk Clearance [9.591mil]
+   Violation between Silk To Silk Clearance Constraint: (9.591mil < 10mil) Between Text "Q2" (459mil,3181mil) on Top Overlay And Track (440.472mil,3198.582mil)(440.472mil,3521.418mil) on Top Overlay Silk Text to Silk Clearance [9.591mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Text "Q3" (53mil,3192mil) on Top Overlay And Track (23.148mil,3198.582mil)(440.472mil,3198.582mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (2.577mil < 10mil) Between Text "R1" (48mil,2529mil) on Top Overlay And Track (139.488mil,2499.764mil)(139.488mil,2676.93mil) on Top Overlay Silk Text to Silk Clearance [2.577mil]
+   Violation between Silk To Silk Clearance Constraint: (4.575mil < 10mil) Between Text "R2" (153mil,2529mil) on Top Overlay And Track (139.488mil,2499.764mil)(139.488mil,2676.93mil) on Top Overlay Silk Text to Silk Clearance [4.575mil]
+Rule Violations :12
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+
+Violations Detected : 78
+Waived Violations : 0
+Time Elapsed        : 00:00:02

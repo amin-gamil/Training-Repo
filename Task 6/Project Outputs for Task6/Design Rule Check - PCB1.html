@@ -1,0 +1,578 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD24\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">8/7/2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11:19:53 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///D:\mia\Task 6\Task6\PCB1.PcbDoc" class="file"><acronym title="D:\mia\Task 6\Task6\PCB1.PcbDoc">D:\mia\Task 6\Task6\PCB1.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">78</td></tr>
+</table>
+</td>
+</table><a name="IDMMM21GVRFVF4JFHM30AKB4FSE2WFJCP2AC0OTGZUEACJPKYKUCF"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJLNWXJ4RJLKNLJGV3IZDQT0AAM0AL3HB4U3KYGL42BDWUTLWRQZF">Clearance Constraint (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSDNA15BOTSE2OZWBBA3U5W3WGDZWPC3LM2XUWDB1YKMGD4YUX05G">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID5GLL3CVFPJPCMW1ZRA1HDUOW1BS1M4ODTGP2XIDPDT1I0TU5TIVN">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDO5SXD5MJQQHDPQ01NWKJ5QYOYNVE4WMB3YHOI0P3LQCYXAPDG2DK">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZKBX5UM4GMSGG5B2MQULM4HMIJJLG2CXFTSFWVDNG2CAECYHHVTD">Width Constraint (Min=31.496mil) (Max=31.496mil) (Preferred=31.496mil) (All)</a></td>
+<td class="column2">63</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVPTA5HPWCTZ1NCW5GUAPADUA1ONFPUVJG2BHROHK11NPQLFJJ3OK">Routing Topology Rule(Topology=Shortest) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPF40GDKKXOIWKQVL1TGS03JFKMYSEN22TL5AEABTYDTIYTPMDGWL">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDMOLDUKJCO0TJHQJNKJ0ETNINEEA2MJGNMZ5KF2GA2E3BNOJQEDBF">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDQ5SJUQNN2ND5P2KNIZDY204KSOHUIQ4A3CD3NLGOYQARATTAND">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0JPN5NFPXW5EN11F5LIUJBOF5PQD2IIOFD2Q1DCPR2IVXFDEP3UM">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDV2HQJ5F21OOUHJECE330HT3MTPLIYNMNHHOXBTIULPI2K0AEZZME">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDO4D0CW1PWO05LHWP4KLDFVS3NFGAZCTGCVQ5O1IHQK3ALYFFQMOM">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">12</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIF0AY5X4VSFKPVJW031DCRHEWJ10OZOKQZGGLMMXHILKBVOKNOXD">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDH4XYJGQJVJTGIJ5UPQKGHAFU0T1OXEAUUNZTDHGXHW0VVJTZJ">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">78</td>
+</tr>
+</table><br><a name="ID5GLL3CVFPJPCMW1ZRA1HDUOW1BS1M4ODTGP2XIDPDT1I0TU5TIVN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=59.425mil|Location2.X=249.787mil|Location1.Y=2436.591mil|Location2.Y=2643.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=59.425mil|Location2.X=249.787mil|Location1.Y=2436.591mil|Location2.Y=2643.528mil|Absolute=True">Un-Routed Net Constraint: Net MCU 1 Between Pad R1-2(90mil,2467.166mil) on Multi-Layer And Pad J1-1(216.26mil,2610mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDZKBX5UM4GMSGG5B2MQULM4HMIJJLG2CXFTSFWVDNG2CAECYHHVTD"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Width Constraint (Min=31.496mil) (Max=31.496mil) (Preferred=31.496mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=529.048mil|Location2.X=551.09mil|Location1.Y=2209.445mil|Location2.Y=2223.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=529.048mil|Location2.X=551.09mil|Location1.Y=2209.445mil|Location2.Y=2223.622mil|Absolute=True">Width Constraint: Arc (568.426mil,2250mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=529.048mil|Location2.X=551.09mil|Location1.Y=2209.445mil|Location2.Y=2223.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=529.048mil|Location2.X=551.09mil|Location1.Y=2209.445mil|Location2.Y=2223.622mil|Absolute=True">Width Constraint: Arc (568.426mil,2250mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=995.855mil|Location2.X=1014.005mil|Location1.Y=2353.796mil|Location2.Y=2370.681mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=995.855mil|Location2.X=1014.005mil|Location1.Y=2353.796mil|Location2.Y=2370.681mil|Absolute=True">Width Constraint: Track (1005mil,2305.592mil)(1005mil,2415mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1287.102mil|Location2.X=1309.143mil|Location1.Y=3295.925mil|Location2.Y=3310.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1287.102mil|Location2.X=1309.143mil|Location1.Y=3295.925mil|Location2.Y=3310.102mil|Absolute=True">Width Constraint: Track (1122.204mil,3475mil)(1465mil,3132.204mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=172.574mil|Location2.X=194.517mil|Location1.Y=3411mil|Location2.Y=3425.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=172.574mil|Location2.X=194.517mil|Location1.Y=3411mil|Location2.Y=3425.276mil|Absolute=True">Width Constraint: Track (121.574mil,3360mil)(236.574mil,3475mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1289.578mil|Location2.X=1311.619mil|Location1.Y=2234.041mil|Location2.Y=2248.218mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1289.578mil|Location2.X=1311.619mil|Location1.Y=2234.041mil|Location2.Y=2248.218mil|Absolute=True">Width Constraint: Track (1235mil,2302.796mil)(1357.155mil,2180.641mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=117.429mil|Location2.X=135.579mil|Location1.Y=3277.713mil|Location2.Y=3294.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=117.429mil|Location2.X=135.579mil|Location1.Y=3277.713mil|Location2.Y=3294.598mil|Absolute=True">Width Constraint: Track (126.574mil,3208.426mil)(126.574mil,3360mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1350.976mil|Location2.X=1373.017mil|Location1.Y=2172.643mil|Location2.Y=2186.82mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1350.976mil|Location2.X=1373.017mil|Location1.Y=2172.643mil|Location2.Y=2186.82mil|Absolute=True">Width Constraint: Track (1357.155mil,2180.641mil)(1357.796mil,2180mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1351.882mil|Location2.X=1376.533mil|Location1.Y=2174.137mil|Location2.Y=2187.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1351.882mil|Location2.X=1376.533mil|Location1.Y=2174.137mil|Location2.Y=2187.137mil|Absolute=True">Width Constraint: Track (1357.155mil,2180.641mil)(1359.61mil,2180.634mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1352.203mil|Location2.X=1376.322mil|Location1.Y=2173.817mil|Location2.Y=2186.817mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1352.203mil|Location2.X=1376.322mil|Location1.Y=2173.817mil|Location2.Y=2186.817mil|Absolute=True">Width Constraint: Track (1357.796mil,2180mil)(1359.61mil,2180.634mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1461mil|Location2.X=1485.65mil|Location1.Y=2173.5mil|Location2.Y=2186.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1461mil|Location2.X=1485.65mil|Location1.Y=2173.5mil|Location2.Y=2186.5mil|Absolute=True">Width Constraint: Track (1357.796mil,2180mil)(1577.204mil,2180mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1461.907mil|Location2.X=1486.557mil|Location1.Y=2173.817mil|Location2.Y=2186.817mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1461.907mil|Location2.X=1486.557mil|Location1.Y=2173.817mil|Location2.Y=2186.817mil|Absolute=True">Width Constraint: Track (1359.61mil,2180.634mil)(1577.204mil,2180mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1414.898mil|Location2.X=1436.841mil|Location1.Y=3077.102mil|Location2.Y=3091.378mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1414.898mil|Location2.X=1436.841mil|Location1.Y=3077.102mil|Location2.Y=3091.378mil|Absolute=True">Width Constraint: Track (1377.796mil,3040mil)(1465mil,3127.204mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1434.602mil|Location2.X=1459.252mil|Location1.Y=2301.296mil|Location2.Y=2314.296mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1434.602mil|Location2.X=1459.252mil|Location1.Y=2301.296mil|Location2.Y=2314.296mil|Absolute=True">Width Constraint: Track (1417.204mil,2307.796mil)(1465mil,2307.796mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1461mil|Location2.X=1483.042mil|Location1.Y=3117.027mil|Location2.Y=3131.204mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1461mil|Location2.X=1483.042mil|Location1.Y=3117.027mil|Location2.Y=3131.204mil|Absolute=True">Width Constraint: Track (1465mil,3127.204mil)(1470mil,3122.204mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1576mil|Location2.X=1600.65mil|Location1.Y=3115.704mil|Location2.Y=3128.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1576mil|Location2.X=1600.65mil|Location1.Y=3115.704mil|Location2.Y=3128.704mil|Absolute=True">Width Constraint: Track (1470mil,3122.204mil)(1695mil,3122.204mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1629.602mil|Location2.X=1651.545mil|Location1.Y=2232.398mil|Location2.Y=2246.675mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1629.602mil|Location2.X=1651.545mil|Location1.Y=2232.398mil|Location2.Y=2246.675mil|Absolute=True">Width Constraint: Track (1577.204mil,2180mil)(1695mil,2297.796mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=158.611mil|Location2.X=176.761mil|Location1.Y=2742.752mil|Location2.Y=2759.637mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=158.611mil|Location2.X=176.761mil|Location1.Y=2742.752mil|Location2.Y=2759.637mil|Absolute=True">Width Constraint: Track (167.756mil,2658.504mil)(167.756mil,2840mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=185.508mil|Location2.X=207.549mil|Location1.Y=2626.575mil|Location2.Y=2640.752mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=185.508mil|Location2.X=207.549mil|Location1.Y=2626.575mil|Location2.Y=2640.752mil|Absolute=True">Width Constraint: Track (167.756mil,2658.504mil)(216.26mil,2610mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=252.378mil|Location2.X=277.028mil|Location1.Y=2833.5mil|Location2.Y=2846.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=252.378mil|Location2.X=277.028mil|Location1.Y=2833.5mil|Location2.Y=2846.5mil|Absolute=True">Width Constraint: Track (167.756mil,2840mil)(350mil,2840mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=163.756mil|Location2.X=185.798mil|Location1.Y=2929.823mil|Location2.Y=2944mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=163.756mil|Location2.X=185.798mil|Location1.Y=2929.823mil|Location2.Y=2944mil|Absolute=True">Width Constraint: Track (167.756mil,2940mil)(172.756mil,2935mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=257.378mil|Location2.X=282.028mil|Location1.Y=2928.5mil|Location2.Y=2941.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=257.378mil|Location2.X=282.028mil|Location1.Y=2928.5mil|Location2.Y=2941.5mil|Absolute=True">Width Constraint: Track (172.756mil,2935mil)(355mil,2935mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=226.307mil|Location2.X=248.25mil|Location1.Y=2513.473mil|Location2.Y=2527.749mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=226.307mil|Location2.X=248.25mil|Location1.Y=2513.473mil|Location2.Y=2527.749mil|Absolute=True">Width Constraint: Track (180mil,2467.166mil)(285.614mil,2572.78mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=303.288mil|Location2.X=327.938mil|Location1.Y=2248.5mil|Location2.Y=2261.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=303.288mil|Location2.X=327.938mil|Location1.Y=2248.5mil|Location2.Y=2261.5mil|Absolute=True">Width Constraint: Track (218.372mil,2255mil)(401.204mil,2255mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14.281mil|Location2.X=32.431mil|Location1.Y=2606.428mil|Location2.Y=2623.313mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14.281mil|Location2.X=32.431mil|Location1.Y=2606.428mil|Location2.Y=2623.313mil|Absolute=True">Width Constraint: Track (23.426mil,2330.186mil)(23.426mil,2895.67mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=37.713mil|Location2.X=59.754mil|Location1.Y=2301.72mil|Location2.Y=2315.898mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=37.713mil|Location2.X=59.754mil|Location1.Y=2301.72mil|Location2.Y=2315.898mil|Absolute=True">Width Constraint: Track (23.426mil,2330.186mil)(65mil,2288.61mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=89.091mil|Location2.X=111.034mil|Location1.Y=2961.335mil|Location2.Y=2975.611mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=89.091mil|Location2.X=111.034mil|Location1.Y=2961.335mil|Location2.Y=2975.611mil|Absolute=True">Width Constraint: Track (23.426mil,2895.67mil)(167.756mil,3040mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14.281mil|Location2.X=32.431mil|Location1.Y=2993.974mil|Location2.Y=3010.859mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14.281mil|Location2.X=32.431mil|Location1.Y=2993.974mil|Location2.Y=3010.859mil|Absolute=True">Width Constraint: Track (23.426mil,2895.67mil)(23.426mil,3105.278mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=68.5mil|Location2.X=90.443mil|Location1.Y=3150.352mil|Location2.Y=3164.628mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=68.5mil|Location2.X=90.443mil|Location1.Y=3150.352mil|Location2.Y=3164.628mil|Absolute=True">Width Constraint: Track (23.426mil,3105.278mil)(126.574mil,3208.426mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=672.889mil|Location2.X=697.539mil|Location1.Y=3468.5mil|Location2.Y=3481.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=672.889mil|Location2.X=697.539mil|Location1.Y=3468.5mil|Location2.Y=3481.5mil|Absolute=True">Width Constraint: Track (236.574mil,3475mil)(1122.204mil,3475mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=276.469mil|Location2.X=294.619mil|Location1.Y=2580.197mil|Location2.Y=2597.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=276.469mil|Location2.X=294.619mil|Location1.Y=2580.197mil|Location2.Y=2597.082mil|Absolute=True">Width Constraint: Track (285.614mil,2572.78mil)(285.614mil,2600.614mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=283.807mil|Location2.X=305.75mil|Location1.Y=2598.807mil|Location2.Y=2613.084mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=283.807mil|Location2.X=305.75mil|Location1.Y=2598.807mil|Location2.Y=2613.084mil|Absolute=True">Width Constraint: Track (285.614mil,2600.614mil)(295mil,2610mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=401mil|Location2.X=422.943mil|Location1.Y=2716mil|Location2.Y=2730.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=401mil|Location2.X=422.943mil|Location1.Y=2716mil|Location2.Y=2730.276mil|Absolute=True">Width Constraint: Track (295mil,2610mil)(520mil,2835mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=312.462mil|Location2.X=330.612mil|Location1.Y=3307.923mil|Location2.Y=3324.788mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=312.462mil|Location2.X=330.612mil|Location1.Y=3307.923mil|Location2.Y=3324.788mil|Absolute=True">Width Constraint: Track (318.424mil,3360mil)(323.424mil,3276.576mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=433.322mil|Location2.X=455.363mil|Location1.Y=3230.925mil|Location2.Y=3245.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=433.322mil|Location2.X=455.363mil|Location1.Y=3230.925mil|Location2.Y=3245.102mil|Absolute=True">Width Constraint: Track (318.424mil,3360mil)(561.22mil,3117.204mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=314.279mil|Location2.X=332.429mil|Location1.Y=3165.076mil|Location2.Y=3181.961mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=314.279mil|Location2.X=332.429mil|Location1.Y=3165.076mil|Location2.Y=3181.961mil|Absolute=True">Width Constraint: Track (323.424mil,3066.576mil)(323.424mil,3276.576mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=332.712mil|Location2.X=354.753mil|Location1.Y=3043.111mil|Location2.Y=3057.288mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=332.712mil|Location2.X=354.753mil|Location1.Y=3043.111mil|Location2.Y=3057.288mil|Absolute=True">Width Constraint: Track (323.424mil,3066.576mil)(355mil,3035mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=437.712mil|Location2.X=459.753mil|Location1.Y=3148.111mil|Location2.Y=3162.288mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=437.712mil|Location2.X=459.753mil|Location1.Y=3148.111mil|Location2.Y=3162.288mil|Absolute=True">Width Constraint: Track (323.424mil,3276.576mil)(565mil,3035mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=346mil|Location2.X=368.041mil|Location1.Y=2829.823mil|Location2.Y=2844mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=346mil|Location2.X=368.041mil|Location1.Y=2829.823mil|Location2.Y=2844mil|Absolute=True">Width Constraint: Track (350mil,2840mil)(355mil,2835mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=443.917mil|Location2.X=468.567mil|Location1.Y=2248.5mil|Location2.Y=2261.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=443.917mil|Location2.X=468.567mil|Location1.Y=2248.5mil|Location2.Y=2261.5mil|Absolute=True">Width Constraint: Track (401.204mil,2255mil)(499.63mil,2255mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125.186mil|Location2.X=147.227mil|Location1.Y=2334.009mil|Location2.Y=2348.186mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125.186mil|Location2.X=147.227mil|Location1.Y=2334.009mil|Location2.Y=2348.186mil|Absolute=True">Width Constraint: Track (45mil,2428.372mil)(218.372mil,2255mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=35.855mil|Location2.X=54.005mil|Location1.Y=2616.308mil|Location2.Y=2633.193mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=35.855mil|Location2.X=54.005mil|Location1.Y=2616.308mil|Location2.Y=2633.193mil|Absolute=True">Width Constraint: Track (45mil,2428.372mil)(45mil,2817.244mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=99.878mil|Location2.X=121.821mil|Location1.Y=2872.122mil|Location2.Y=2886.398mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=99.878mil|Location2.X=121.821mil|Location1.Y=2872.122mil|Location2.Y=2886.398mil|Absolute=True">Width Constraint: Track (45mil,2817.244mil)(167.756mil,2940mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=507.182mil|Location2.X=529.223mil|Location1.Y=2233.271mil|Location2.Y=2247.448mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=507.182mil|Location2.X=529.223mil|Location1.Y=2233.271mil|Location2.Y=2247.448mil|Absolute=True">Width Constraint: Track (499.63mil,2255mil)(527.734mil,2226.896mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=536mil|Location2.X=560.65mil|Location1.Y=2828.5mil|Location2.Y=2841.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=536mil|Location2.X=560.65mil|Location1.Y=2828.5mil|Location2.Y=2841.5mil|Absolute=True">Width Constraint: Track (520mil,2835mil)(565mil,2835mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=522.783mil|Location2.X=543.755mil|Location1.Y=2216.161mil|Location2.Y=2231.267mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=522.783mil|Location2.X=543.755mil|Location1.Y=2216.161mil|Location2.Y=2231.267mil|Absolute=True">Width Constraint: Track (527.734mil,2226.896mil)(530.833mil,2222.639mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=531.576mil|Location2.X=553.877mil|Location1.Y=2208.572mil|Location2.Y=2222.474mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=531.576mil|Location2.X=553.877mil|Location1.Y=2208.572mil|Location2.Y=2222.474mil|Absolute=True">Width Constraint: Track (530.833mil,2222.639mil)(545.32mil,2209.31mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=552.01mil|Location2.X=574.051mil|Location1.Y=2188.441mil|Location2.Y=2202.619mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=552.01mil|Location2.X=574.051mil|Location1.Y=2188.441mil|Location2.Y=2202.619mil|Absolute=True">Width Constraint: Track (545.32mil,2209.31mil)(571.7mil,2182.928mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=891.61mil|Location2.X=916.26mil|Location1.Y=3110.704mil|Location2.Y=3123.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=891.61mil|Location2.X=916.26mil|Location1.Y=3110.704mil|Location2.Y=3123.704mil|Absolute=True">Width Constraint: Track (561.22mil,3117.204mil)(1235mil,3117.204mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=666mil|Location2.X=690.65mil|Location1.Y=2828.5mil|Location2.Y=2841.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=666mil|Location2.X=690.65mil|Location1.Y=2828.5mil|Location2.Y=2841.5mil|Absolute=True">Width Constraint: Track (565mil,2835mil)(780mil,2835mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=561mil|Location2.X=582.943mil|Location1.Y=2931mil|Location2.Y=2945.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=561mil|Location2.X=582.943mil|Location1.Y=2931mil|Location2.Y=2945.276mil|Absolute=True">Width Constraint: Track (565mil,2935mil)(570mil,2940mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=671mil|Location2.X=695.65mil|Location1.Y=2933.5mil|Location2.Y=2946.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=671mil|Location2.X=695.65mil|Location1.Y=2933.5mil|Location2.Y=2946.5mil|Absolute=True">Width Constraint: Track (570mil,2940mil)(785mil,2940mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=957.928mil|Location2.X=982.578mil|Location1.Y=2175.284mil|Location2.Y=2188.284mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=957.928mil|Location2.X=982.578mil|Location1.Y=2175.284mil|Location2.Y=2188.284mil|Absolute=True">Width Constraint: Track (571.7mil,2182.928mil)(1357.155mil,2180.641mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=716.764mil|Location2.X=738.707mil|Location1.Y=2406.764mil|Location2.Y=2421.041mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=716.764mil|Location2.X=738.707mil|Location1.Y=2406.764mil|Location2.Y=2421.041mil|Absolute=True">Width Constraint: Track (581.528mil,2271.528mil)(865mil,2555mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=55.855mil|Location2.X=74.005mil|Location1.Y=2206.722mil|Location2.Y=2223.607mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=55.855mil|Location2.X=74.005mil|Location1.Y=2206.722mil|Location2.Y=2223.607mil|Absolute=True">Width Constraint: Track (65mil,2137.834mil)(65mil,2288.61mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=71mil|Location2.X=93.041mil|Location1.Y=2117.657mil|Location2.Y=2131.834mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=71mil|Location2.X=93.041mil|Location1.Y=2117.657mil|Location2.Y=2131.834mil|Absolute=True">Width Constraint: Track (65mil,2137.834mil)(90mil,2112.834mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=776mil|Location2.X=797.943mil|Location1.Y=2831mil|Location2.Y=2845.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=776mil|Location2.X=797.943mil|Location1.Y=2831mil|Location2.Y=2845.276mil|Absolute=True">Width Constraint: Track (780mil,2835mil)(785mil,2840mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=818.5mil|Location2.X=840.542mil|Location1.Y=2892.323mil|Location2.Y=2906.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=818.5mil|Location2.X=840.542mil|Location1.Y=2892.323mil|Location2.Y=2906.5mil|Absolute=True">Width Constraint: Track (785mil,2940mil)(865mil,2860mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1074.898mil|Location2.X=1099.548mil|Location1.Y=3033.5mil|Location2.Y=3046.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1074.898mil|Location2.X=1099.548mil|Location1.Y=3033.5mil|Location2.Y=3046.5mil|Absolute=True">Width Constraint: Track (785mil,3040mil)(1377.796mil,3040mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=928.5mil|Location2.X=950.542mil|Location1.Y=2477.323mil|Location2.Y=2491.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=928.5mil|Location2.X=950.542mil|Location1.Y=2477.323mil|Location2.Y=2491.5mil|Absolute=True">Width Constraint: Track (865mil,2555mil)(1005mil,2415mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=855.855mil|Location2.X=874.005mil|Location1.Y=2701mil|Location2.Y=2717.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=855.855mil|Location2.X=874.005mil|Location1.Y=2701mil|Location2.Y=2717.885mil|Absolute=True">Width Constraint: Track (865mil,2555mil)(865mil,2860mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1134.602mil|Location2.X=1156.643mil|Location1.Y=2576.221mil|Location2.Y=2590.398mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1134.602mil|Location2.X=1156.643mil|Location1.Y=2576.221mil|Location2.Y=2590.398mil|Absolute=True">Width Constraint: Track (865mil,2860mil)(1417.204mil,2307.796mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=128.5mil|Location2.X=153.15mil|Location1.Y=2106.334mil|Location2.Y=2119.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=128.5mil|Location2.X=153.15mil|Location1.Y=2106.334mil|Location2.Y=2119.334mil|Absolute=True">Width Constraint: Track (90mil,2112.834mil)(180mil,2112.834mil) on Top Layer Actual Width = 10mil, Target Width = 31.496mil</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDV2HQJ5F21OOUHJECE330HT3MTPLIYNMNHHOXBTIULPI2K0AEZZME"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=179.157mil|Location2.X=186.824mil|Location1.Y=2585.147mil|Location2.Y=2592.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=179.157mil|Location2.X=186.824mil|Location1.Y=2585.147mil|Location2.Y=2592.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad J1-1(216.26mil,2610mil) on Multi-Layer And Text "R2" (153mil,2529mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=189.375mil|Location2.X=200.625mil|Location1.Y=2489.165mil|Location2.Y=2500.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=189.375mil|Location2.X=200.625mil|Location1.Y=2489.165mil|Location2.Y=2500.415mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.074mil &lt; 10mil) Between Pad R2-2(195mil,2467.166mil) on Multi-Layer And Track (139.488mil,2499.764mil)(371.772mil,2499.764mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.074mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDO4D0CW1PWO05LHWP4KLDFVS3NFGAZCTGCVQ5O1IHQK3ALYFFQMOM"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.167mil|Location2.X=148.833mil|Location1.Y=2718.164mil|Location2.Y=2725.83mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.167mil|Location2.X=148.833mil|Location1.Y=2718.164mil|Location2.Y=2725.83mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Arc (140mil,2723.465mil) on Top Overlay And Text "J1" (145mil,2712mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=314.592mil|Location2.X=322.259mil|Location1.Y=3177.167mil|Location2.Y=3184.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=314.592mil|Location2.X=322.259mil|Location1.Y=3177.167mil|Location2.Y=3184.833mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Arc (318.425mil,3172.992mil) on Top Overlay And Text "Q1" (249mil,3181mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=217.178mil|Location2.X=228.428mil|Location1.Y=2766.356mil|Location2.Y=2777.606mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=217.178mil|Location2.X=228.428mil|Location1.Y=2766.356mil|Location2.Y=2777.606mil|Absolute=True">Silk To Silk Clearance Constraint: (5.652mil &lt; 10mil) Between Text "J1" (145mil,2712mil) on Top Overlay And Track (229.566mil,2762.834mil)(229.566mil,3117.166mil) on Top Overlay Silk Text to Silk Clearance [5.652mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=171.157mil|Location2.X=178.824mil|Location1.Y=2750.605mil|Location2.Y=2758.271mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=171.157mil|Location2.X=178.824mil|Location1.Y=2750.605mil|Location2.Y=2758.271mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "J1" (145mil,2712mil) on Top Overlay And Track (50.434mil,2735.276mil)(229.566mil,2762.834mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=310.157mil|Location2.X=317.824mil|Location1.Y=2495.931mil|Location2.Y=2503.597mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=310.157mil|Location2.X=317.824mil|Location1.Y=2495.931mil|Location2.Y=2503.597mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "J3" (284mil,2482mil) on Top Overlay And Track (139.488mil,2499.764mil)(371.772mil,2499.764mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=367.939mil|Location2.X=375.605mil|Location1.Y=2538.147mil|Location2.Y=2545.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=367.939mil|Location2.X=375.605mil|Location1.Y=2538.147mil|Location2.Y=2545.814mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "J3" (284mil,2482mil) on Top Overlay And Track (371.772mil,2499.764mil)(371.772mil,2676.93mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=285.154mil|Location2.X=292.82mil|Location1.Y=3194.749mil|Location2.Y=3202.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=285.154mil|Location2.X=292.82mil|Location1.Y=3194.749mil|Location2.Y=3202.415mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q1" (249mil,3181mil) on Top Overlay And Track (23.148mil,3198.582mil)(440.472mil,3198.582mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=443.579mil|Location2.X=454.829mil|Location1.Y=3192.957mil|Location2.Y=3204.207mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=443.579mil|Location2.X=454.829mil|Location1.Y=3192.957mil|Location2.Y=3204.207mil|Absolute=True">Silk To Silk Clearance Constraint: (9.591mil &lt; 10mil) Between Text "Q2" (459mil,3181mil) on Top Overlay And Track (23.148mil,3198.582mil)(440.472mil,3198.582mil) on Top Overlay Silk Text to Silk Clearance [9.591mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=443.579mil|Location2.X=454.829mil|Location1.Y=3225.359mil|Location2.Y=3236.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=443.579mil|Location2.X=454.829mil|Location1.Y=3225.359mil|Location2.Y=3236.609mil|Absolute=True">Silk To Silk Clearance Constraint: (9.591mil &lt; 10mil) Between Text "Q2" (459mil,3181mil) on Top Overlay And Track (440.472mil,3198.582mil)(440.472mil,3521.418mil) on Top Overlay Silk Text to Silk Clearance [9.591mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=89.154mil|Location2.X=96.82mil|Location1.Y=3194.749mil|Location2.Y=3202.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=89.154mil|Location2.X=96.82mil|Location1.Y=3194.749mil|Location2.Y=3202.415mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "Q3" (53mil,3192mil) on Top Overlay And Track (23.148mil,3198.582mil)(440.472mil,3198.582mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=128.637mil|Location2.X=139.887mil|Location1.Y=2523.375mil|Location2.Y=2534.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=128.637mil|Location2.X=139.887mil|Location1.Y=2523.375mil|Location2.Y=2534.625mil|Absolute=True">Silk To Silk Clearance Constraint: (2.577mil &lt; 10mil) Between Text "R1" (48mil,2529mil) on Top Overlay And Track (139.488mil,2499.764mil)(139.488mil,2676.93mil) on Top Overlay Silk Text to Silk Clearance [2.577mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=140.088mil|Location2.X=151.338mil|Location1.Y=2523.375mil|Location2.Y=2534.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\mia\Task 6\Task6\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=140.088mil|Location2.X=151.338mil|Location1.Y=2523.375mil|Location2.Y=2534.625mil|Absolute=True">Silk To Silk Clearance Constraint: (4.575mil &lt; 10mil) Between Text "R2" (153mil,2529mil) on Top Overlay And Track (139.488mil,2499.764mil)(139.488mil,2676.93mil) on Top Overlay Silk Text to Silk Clearance [4.575mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
