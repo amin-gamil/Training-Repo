@@ -22,7 +22,7 @@ float pid(){
   input = input; // read sensor data
   error = output - input;
   t2 = millis();
-  output = kp * error + ki * (t2 - t1) + kd * (error - past)/(t2 - t1);
+  output = kp * error + ki * error * (t2 - t1) + kd * (error - past)/(t2 - t1);
   t1 = t2;
   past = error;
   return output;
