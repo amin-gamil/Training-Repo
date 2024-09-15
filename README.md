@@ -1,5 +1,5 @@
 ## Exercise 
-1. Since a perceptron's output is defined as:
+ Since a perceptron's output is defined as:
    $$ \text{output} = \left\{ \begin{array}{ll}   0 & \text{if } w\cdot x + b \leq 0 \\ 1 & \text{if } w\cdot x + b > 0 \end{array} \right. $$ 
    Multiplying all weights and biases by a constant $c > 0$, would make the piecewise :
 
@@ -8,7 +8,7 @@
    Since the constant $c$ is positive, it can be divided out of the equations without inverting the inequality, having no effect on the perceptron's output.
 
 2. The output of the sigmoid function is 
-   $$ \sigma = \frac{1}{1+e^{-z}}$$
+   $$ \sigma = \dfrac{1}{1+e^{-z}}$$
    while defining $z = w \cdot x + b$.
    Multiplying the weights and biases by $c$ and taking the limit while $c \rightarrow \infty$ 
    $$ \sigma = \lim_{c \rightarrow \infty} \dfrac{1}{1+e^{-c z}}$$
