@@ -2,7 +2,7 @@
 
  Since a perceptron's output is defined as:
    $$
-   \text{output} = \left\{ 
+   \text{output} = \left\lbrace
    \begin{array}{ll} 
    0 & \text{if } w\cdot x + b \leq 0 \\ 
    1 & \text{if } w\cdot x + b > 0 
