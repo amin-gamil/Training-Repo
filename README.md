@@ -1,6 +1,8 @@
 ## Exercise 
 1. Since a perceptron's output is defined as:
-   $$\text{output} = \left\{ \begin{array}{ll}   0 & \text{if } w\cdot x + b \leq 0 \\ 1 & \text{if } w\cdot x + b > 0 \end{array} \right.$$ 
+   ```math
+   \text{output} = \left\{ \begin{array}{ll}   0 & \text{if } w\cdot x + b \leq 0 \\ 1 & \text{if } w\cdot x + b > 0 \end{array} \right.
+   ```
    Multiplying all weights and biases by a constant c > 0, would make the piecewise :
 
    $$\text{output} = \left\{ \begin{array}{ll}   0 & \text{if } cw\cdot x + c  b \leq 0 \\ 1 & \text{if } cw\cdot x + cb > 0 \end{array} \right.$$ 
@@ -23,7 +25,7 @@
    If $z = 0$, the limit becomes
    $$\lim_{c \rightarrow \infty}(-c z) = - 0 \times \infty$$
    Which is indeterminate.
-   
+
    
 
    
