@@ -1,6 +1,6 @@
 ## Exercise 
 
-1. Since a perceptron's output is defined as:
+ Since a perceptron's output is defined as:
    $$
    \text{output} = \left\{ 
    \begin{array}{ll} 
@@ -22,7 +22,7 @@
 
    Since the constant $c$ is positive, it can be divided out of the equations without inverting the inequality, having no effect on the perceptron's output.
 
-2. The output of the sigmoid function is 
+ The output of the sigmoid function is 
    $$
    \sigma = \dfrac{1}{1+e^{-z}}
    $$
