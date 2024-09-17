@@ -1,5 +1,6 @@
 ## Exercise 📝
 
+**Q.1)**
 Since a perceptron's output is defined as:
  
    $$
@@ -24,8 +25,8 @@ Since a perceptron's output is defined as:
 
    Since the constant $c$ is positive, it can be divided out of the equations without inverting the inequality, having no effect on the perceptron's output.
 
-The output of the sigmoid function is 
- 
+**Q.2)** The output of the sigmoid function is 
+
    $$
    \sigma = \dfrac{1}{1+e^{-z}}
    $$
@@ -75,35 +76,35 @@ The output of the sigmoid function is
    
    Which is indeterminate.
 
-3. Each neuron "bit" in the fourth layer should have 10 inputs with 10 weights. Some guiding rules are:
+**Q.3)** Each neuron "bit" in the fourth layer should have 10 inputs with 10 weights. Some guiding rules are:
    - The first neuron representing the LSB would have a weight of zero for all even numbers.
    - The MSB neuron would have a weight of zero for all numbers less than 8.
 
    The activation of each neuron in the forth bit is 
 
-    $$
-    a = \sum_{i=0}^{9}{w_i x_i} = w \cdot x
-    $$
+   $$
+   a = \sum_{i=0}^{9}{w_i x_i} = w \cdot x
+   $$
 
-    |  | $w_0$ | $w_1$ | $w_2$ | $w_3$ | $w_4$ | $w_5$ | $w_6$ | $w_7$ | $w_8$ | $w_9$ |
-    |:-------:|:-----:|:-----:|:-----:|:-----:| :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-    |  $a_1$  |   0   |  4.65 |   0   |  2.32 |   0   |  2.32 |   0   |  1.55 |   0   |  2.32 |
-    |  $a_2$  |   0   |   0   |  4.65 |  2.32 |   0   |   0   |  2.32 |  1.55 |   0   |   0   |
-    |  $a_3$  |   0   |   0   |   0   |   0   |  4.65 |  2.32 |  2.32 |  1.55 |   0   |   0   |
-    |  $a_4$  |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |  4.65 |  2.32 |
+   |  | $w_0$ | $w_1$ | $w_2$ | $w_3$ | $w_4$ | $w_5$ | $w_6$ | $w_7$ | $w_8$ | $w_9$ |
+   |:-------:|:-----:|:-----:|:-----:|:-----:| :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+   |  $a_1$  |   0   |  4.65 |   0   |  2.32 |   0   |  2.32 |   0   |  1.55 |   0   |  2.32 |
+   |  $a_2$  |   0   |   0   |  4.65 |  2.32 |   0   |   0   |  2.32 |  1.55 |   0   |   0   |
+   |  $a_3$  |   0   |   0   |   0   |   0   |  4.65 |  2.32 |  2.32 |  1.55 |   0   |   0   |
+   |  $a_4$  |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |  4.65 |  2.32 |
 
-    These weights would work for all digits expect zero where the output wouldn't be activated at all since $w_0=0$ for all neurons. That's why we need to add bias,
+   These weights would work for all digits expect zero where the output wouldn't be activated at all since $w_0=0$ for all neurons. That's why we need to add bias,
 
-    $$b_0 = 3$$
+   $$b_0 = 3$$
 
-    and update the weights to be;
+   and update the weights to be;
 
-    | Weights | $w_0$ | $w_1$ | $w_2$ | $w_3$ | $w_4$ | $w_5$ | $w_6$ | $w_7$ | $w_8$ | $w_9$ |
-    |:-------:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-    |  $a_1$  |   -1  |  4.65 |   0   |  2.32 |   0   |  2.32 |   0   |  1.55 |   0   |  2.32 |
-    |  $a_2$  |   -1  |   0   |  4.65 |  2.32 |   0   |   0   |  2.32 |  1.55 |   0   |   0   |
-    |  $a_3$  |   -1  |   0   |   0   |   0   |  4.65 |  2.32 |  2.32 |  1.55 |   0   |   0   |
-    |  $a_4$  |   -1  |   0   |   0   |   0   |   0   |   0   |   0   |   0   |  4.65 |  2.32 |
+   | Weights | $w_0$ | $w_1$ | $w_2$ | $w_3$ | $w_4$ | $w_5$ | $w_6$ | $w_7$ | $w_8$ | $w_9$ |
+   |:-------:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+   |  $a_1$  |   -1  |  4.65 |   0   |  2.32 |   0   |  2.32 |   0   |  1.55 |   0   |  2.32 |
+   |  $a_2$  |   -1  |   0   |  4.65 |  2.32 |   0   |   0   |  2.32 |  1.55 |   0   |   0   |
+   |  $a_3$  |   -1  |   0   |   0   |   0   |  4.65 |  2.32 |  2.32 |  1.55 |   0   |   0   |
+   |  $a_4$  |   -1  |   0   |   0   |   0   |   0   |   0   |   0   |   0   |  4.65 |  2.32 |
 
 ## Creating a Neural Network
 To create a neural network, we need to implement:
